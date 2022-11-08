@@ -1,0 +1,179 @@
+package com.adactin.stepdefinition;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import com.adactin.runner.RunnerClass;
+
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+
+public class StepDefinition {
+	
+		public static WebDriver driver = RunnerClass.driver;
+			
+		//Login Page**************
+		
+		@Given("^user Launch the web application$")
+		public void user_Launch_the_web_application() throws Throwable {
+			driver.get("https://adactinhotelapp.com/");
+		}
+	
+		@When("^user Enter the Username in user user field$")
+		public void user_Enter_the_Username_in_user_user_field() throws Throwable {
+			
+			WebElement Username = driver.findElement(By.xpath("//input[@id= 'username']"));
+			Username.sendKeys("Devaprakash");
+			
+		}
+	
+		@And("^user Enter the password in password field$")
+		public void user_Enter_the_password_in_password_field() throws Throwable {
+			
+			WebElement password = driver.findElement(By.xpath("//input[@id= 'password']"));
+			password.sendKeys("De@123");
+		}
+	
+		@Then("^user clik the login button to navigate to sear hotel page$")
+		public void user_clik_the_login_button_to_navigate_to_sear_hotel_page() throws Throwable {
+			
+			WebElement Click1 = driver.findElement(By.xpath("//input[@id= 'login']"));
+			Click1.click();	
+		}
+
+	//Search hotel Page**************
+		@When("^User Select the location from the dropdown$")
+		public void user_Select_the_location_from_the_dropdown() throws Throwable {
+		    
+			WebElement List = driver.findElement(By.xpath("//select[@id='location']"));
+			Select S = new Select(List);
+			S.selectByVisibleText("New York");
+		}
+
+		@When("^User Select the Hotel from the dropdown$")
+		public void user_Select_the_Hotel_from_the_dropdown() throws Throwable {
+			WebElement List1 = driver.findElement(By.xpath("//select[@id='hotels']"));
+			Select S1 = new Select(List1);
+			S1.selectByIndex(2);
+		}
+
+		@When("^User Select the Room Type from the dropdown$")
+		public void user_Select_the_Room_Type_from_the_dropdown() throws Throwable {
+			WebElement List2 = driver.findElement(By.xpath("//select[@id='room_type']"));
+			Select S2 = new Select(List2);
+			S2.selectByValue("Deluxe");
+		}
+
+		@When("^User Select the number of Rooms form the dropdown$")
+		public void user_Select_the_number_of_Rooms_form_the_dropdown() throws Throwable {
+			WebElement List3 = driver.findElement(By.xpath("//select[@id='room_nos']"));
+			Select S3 = new Select(List3);
+			S3.selectByValue("4");
+		}
+
+		@When("^User need to provide the check In date from the Calander$")
+		public void user_need_to_provide_the_check_In_date_from_the_Calander() throws Throwable {
+			WebElement Checkin = driver.findElement(By.xpath("//input[@id='datepick_in']"));
+			Checkin.clear();
+			Checkin.sendKeys("10/11/2022");
+		}
+
+		@When("^User need to provide the check Out date from the Calander$")
+		public void user_need_to_provide_the_check_Out_date_from_the_Calander() throws Throwable {
+			WebElement Checkout = driver.findElement(By.xpath("//input[@id='datepick_out']"));
+			Checkout.clear();
+			Checkout.sendKeys("13/11/2022");
+		}
+
+		@When("^User Select the Adults per room from the dropdown$")
+		public void user_Select_the_Adults_per_room_from_the_dropdown() throws Throwable {
+			WebElement List4 = driver.findElement(By.xpath("//select[@id='adult_room']"));
+			Select S4 = new Select(List4);
+			S4.selectByValue("3");
+		}
+
+		@When("^User Select the Child per room from the dropdown$")
+		public void user_Select_the_Child_per_room_from_the_dropdown() throws Throwable {
+			WebElement List5 = driver.findElement(By.xpath("//select[@id='child_room']"));
+			Select S5 = new Select(List5);
+			S5.selectByValue("4");
+		}
+
+		@Then("^User Click the secrch button to find hotel$")
+		public void user_Click_the_secrch_button_to_find_hotel() throws Throwable {
+			WebElement Search = driver.findElement(By.xpath("//input[@id='Submit']"));
+			Search.click();
+		}
+		//Select hotel Page**************
+		
+		@When("^User Select the hotel by clicking Radio button$")
+		public void user_Select_the_hotel_by_clicking_Radio_button() throws Throwable {
+			WebElement SleHotel = driver.findElement(By.xpath("//input[@type='radio']"));	
+			SleHotel.click();
+		}
+
+		@Then("^User Click the contine button to Navigate hotel boooking page$")
+		public void user_Click_the_contine_button_to_Navigate_hotel_boooking_page() throws Throwable {
+			WebElement Continue = driver.findElement(By.xpath("//input[@id='continue']"));
+			Continue.click();
+		}
+		
+		//Hotel booking form
+		@When("^User Enter the first name$")
+		public void user_Enter_the_first_name() throws Throwable {
+			WebElement List1 = driver.findElement(By.xpath("//input[@id= 'first_name']"));
+			List1.sendKeys("Deva");
+		}
+
+		@When("^User Enter the last name$")
+		public void user_Enter_the_last_name() throws Throwable {
+			WebElement List2 = driver.findElement(By.xpath("//input[@id= 'last_name']"));
+			List2.sendKeys("Deva");
+		}
+
+		@When("^User Enter the perosnal address$")
+		public void user_Enter_the_perosnal_address() throws Throwable {
+			WebElement List3 = driver.findElement(By.xpath("//textarea[@id= 'address']"));
+			List3.sendKeys("20 Siva st chennai");
+		}
+
+		@When("^User Enter the credit card number$")
+		public void user_Enter_the_credit_card_number() throws Throwable {
+			WebElement List4 = driver.findElement(By.xpath("//input[@id= 'cc_num']"));
+			List4.sendKeys("1000 0000 0000 0000");
+		}
+
+		@When("^User Select the credit card type from the list$")
+		public void user_Select_the_credit_card_type_from_the_list() throws Throwable {
+			WebElement List5 = driver.findElement(By.xpath("//select[@id='cc_type']"));
+			Select S1 = new Select(List5);
+			S1.selectByValue("VISA");
+		}
+
+		@When("^User Select the credit card expiry date$")
+		public void user_Select_the_credit_card_expiry_date() throws Throwable {
+			WebElement List6 = driver.findElement(By.xpath("//input[@id='continue']"));
+			Select S1 = new Select(List5);
+			S1.selectByValue("VISA");
+		}
+
+		@When("^User Enter the CCV number of the credit card$")
+		public void user_Enter_the_CCV_number_of_the_credit_card() throws Throwable {
+			WebElement Continue = driver.findElement(By.xpath("//input[@id='continue']"));
+			Continue.sendKeys("Deva");
+		}
+
+		@Then("^User Click the Book Now Button to book the hotel$")
+		public void user_Click_the_Book_Now_Button_to_book_the_hotel() throws Throwable {
+			WebElement Continue = driver.findElement(By.xpath("//input[@id='continue']"));
+			Continue.sendKeys("Deva");
+		}
+
+		
+	
+}

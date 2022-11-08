@@ -1,0 +1,42 @@
+package greensProject;
+
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JOptionPane;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Adactinhotelapp {
+
+	public static void main(String[] args)throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Deva\\eclipse-workspace\\WebDriver\\Chrom\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.get("https://adactinhotelapp.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS	);
+
+		//New user Registration 
+		
+		driver.findElementByXPath("//a[contains(text(),'New User Register Here')]").click();
+		driver.findElementByXPath("//input[@id= 'username']").sendKeys("Deva");
+		driver.findElementByXPath("//input[@id= 'password']").sendKeys("De@123");
+		driver.findElementByXPath("//input[@id= 're_password']").sendKeys("De@123");
+		driver.findElementByXPath("//input[@id= 'full_name']").sendKeys("Devaraj");
+		driver.findElementByXPath("(//input[@maxlength = '50'])[2]").sendKeys("devwrkact@gmail.com");
+		
+		//Captcha 
+		String str = JOptionPane.showInputDialog("Enter Captcha") ;
+		WebElement element = driver.findElementByXPath("//input[@name = 'captcha']");
+		element.sendKeys(str);
+		
+		driver.findElementByXPath("//input[@type = 'checkbox']").click();
+		driver.findElementByXPath("//input[@type = 'submit']").click();
+		
+		
+				
+		
+		
+	}
+
+}

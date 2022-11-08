@@ -1,0 +1,72 @@
+package greensProject;
+
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JOptionPane;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Adactinhotelapp {
+
+	public static void main(String[] args)throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Deva\\eclipse-workspace\\WebDriver\\Chrom\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.get("https://adactinhotelapp.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS	);
+
+		//New user Registration 
+		
+//		driver.findElementByXPath("//a[contains(text(),'New User Register Here')]").click();
+//		driver.findElementByXPath("//input[@id= 'username']").sendKeys("Devaprakash");
+//		driver.findElementByXPath("//input[@id= 'password']").sendKeys("De@123");
+//		driver.findElementByXPath("//input[@id= 're_password']").sendKeys("De@123");
+//		driver.findElementByXPath("//input[@id= 'full_name']").sendKeys("Devaraj");
+//		driver.findElementByXPath("(//input[@maxlength = '50'])[2]").sendKeys("devwrkact@gmail.com");
+//		
+//		//Captcha 
+//		String str = JOptionPane.showInputDialog("Enter Captcha") ;
+//		WebElement element = driver.findElementByXPath("//input[@name = 'captcha']");
+//		element.sendKeys(str);
+//		
+//		driver.findElementByXPath("//input[@type = 'checkbox']").click();
+//		driver.findElementByXPath("//input[@type = 'submit']").click();
+//		driver.findElementByXPath("//a[contains(text(),'Click here to login')]").click();
+		
+		//Login
+		driver.findElementByXPath("//input[@id= 'username']").sendKeys("Devaprakash");
+		driver.findElementByXPath("//input[@id= 'password']").sendKeys("De@123");
+		driver.findElementByXPath("//input[@id= 'login']").click();
+		
+		//Select
+		WebElement List = driver.findElement(By.xpath("//select[@id='location']"));
+		Select S = new Select(List);
+		S.selectByVisibleText("New York");
+		
+		WebElement List1 = driver.findElement(By.xpath("//select[@id='hotels']"));
+		Select S1 = new Select(List1);
+		S1.selectByIndex(2);
+		
+		WebElement List2 = driver.findElement(By.xpath("//select[@id='room_type']"));
+		Select S2 = new Select(List2);
+		S2.selectByValue("Deluxe");
+		
+		WebElement List3 = driver.findElement(By.xpath("//select[@id='room_nos']"));
+		Select S3 = new Select(List3);
+		S3.selectByValue("4");
+		
+		//TodayDate
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		LocalDate localDate = LocalDate.now();
+		
+		driver.findElementByXPath("//input[@id='datepick_in']").sendKeys(dtf.format(localDate));
+	}
+
+}

@@ -1,0 +1,10 @@
+Feature: Hotel Booking In Adactin Application
+
+Scenario: User login In Adactin  Application
+
+Given user Launch the web application
+When user Enter the Username in user user field
+And  user Enter the password in password field 
+Then user clik the login button to navigate to sear hotel page
+
+Scenario2: User login In Adactin  Application

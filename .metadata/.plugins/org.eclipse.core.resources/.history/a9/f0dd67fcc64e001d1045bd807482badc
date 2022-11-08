@@ -1,0 +1,77 @@
+package com.ProjectPractice;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class DressOrder {
+
+	public static void main(String[] args) throws InterruptedException, Throwable{
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Deva\\eclipse-workspace\\WebDriver\\Chrom\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.get("http://automationpractice.com/index.php");
+		driver.manage().window().maximize();
+		//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS	);
+		
+        //Mouse action hover and click
+		Actions Ac = new Actions(driver);
+		Thread.sleep(2000);
+		WebElement Mus = driver.findElementByXPath("//a[@title='Women']");
+		Ac.moveToElement(Mus).build().perform(); // hover the mouse
+		
+		Thread.sleep(2000);
+		WebElement Mus1 = driver.findElementByXPath("(//a[text()='T-shirts'])[1]");
+		Ac.click(Mus1).build().perform(); // Click
+		
+		Thread.sleep(2000);
+		WebElement Mus2 = driver.findElementByXPath("(//a[text()='T-shirts'])[1]");
+		Ac.click(Mus2).build().perform(); // Click
+		
+		
+		WebElement Mob = driver.findElementByXPath("//span[text()='Add to cart']]");
+		Actions Ac2 = new Actions(driver);	
+		Robot r = new Robot();
+		Ac.contextClick(Mob).build().perform();
+		JavascriptExecutor js =(JavascriptExecutor)driver;
+		
+//		WebElement Logo = driver.findElementByXPath("//a[@itemprop='url']//img[@itemprop ='image']");
+//		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS	); // Implicit wait 
+//		js.executeScript("arguments[0].scrollIntoView();", Logo);
+		
+		
+//		WebElement Mus3 = driver.findElementByXPath("//a[@itemprop='url']//img[@itemprop ='image']");
+//		Ac.moveToElement(Mus).build().perform(); // hover the mouse
+//		
+//		WebDriverWait wait = new WebDriverWait (driver,30);//Explicit wait
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Add to cart']]"))).click();
+		
+		
+		
+		
+		
+		
+		
+//		WebDriverWait wait1 = new WebDriverWait(driver, 10);
+//		WebElement element1 = wait1.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Add to cart']")));
+//		element1.click();
+		
+//		WebElement Logo = driver.findElementByXPath("//span[text()='Add to cart']");	
+//		js.executeScript("arguments[0].scrollIntoView();", Logo);
+//		
+//		WebElement Mus3 = driver.findElementByXPath("//a[@itemprop='url']//img[@itemprop ='image']");
+//		Ac.moveToElement(Mus).build().perform(); // hover the mouse
+//		Thread.sleep(2000);
+		//driver.findElementByXPath("//span[text()='Add to cart']").click();
+		
+
+	}
+
+}

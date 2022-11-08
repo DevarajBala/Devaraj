@@ -1,0 +1,24 @@
+Feature: Hotel Booking In Adactin Application
+
+Scenario: 1 User login In Adactin  Application
+
+Given user Launch the web application
+When user Enter the Username in user user field
+And  user Enter the password in password field 
+Then user clik the login button to navigate to sear hotel page
+
+
+Scenario: 2 User search for hotel with the required details
+
+When User Select the location from the dropdown
+And  User Select the Hotel from the dropdown
+And  User Select the Room Type from the dropdown
+And  User Select the number of Rooms form the dropdown
+And  User need to provide the check In date from the Calander 
+And  User need to provide the check Out date from the Calander
+And  User Select the Adults per room from the dropdown
+And  User Select the Child per room from the dropdown
+Then User Click the secrch button to find hotel 
+
+Scenario: 3 Select hotel
+
